@@ -24,6 +24,8 @@ istio的安装比较简单，官网有具体的安装步骤，以0.8.0为例，�
 # kubectl create -f <(istioctl kube-inject -f za-deploy.yaml)
 # kubectl create -f <(istioctl kube-inject -f zb-deploy.yaml)
 # kubectl create -f <(istioctl kube-inject -f zc-deploy.yaml)
+
+自动注入的话，需要修改apiserver的配置参数，在admission-control配置项中添加：MutatingAdmissionWebhook、ValidatingAdmissionWebhook。
 ```
 
 #### 查看
@@ -38,5 +40,11 @@ istio的安装比较简单，官网有具体的安装步骤，以0.8.0为例，�
 1.每个Pod只能关联一个Service；
 2.Service端口要有特定的name，如http、http2、grpc、mongo、redis等；
 3.label中必须带有app开头的key。
+```
+
+#### 路由配置
+
+```
+
 ```
 

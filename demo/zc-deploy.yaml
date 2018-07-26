@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zc
+spec:
+  selector:
+    matchLabels:
+      app: za
+      version: v3
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: za
+        version: v3
+    spec:
+      containers:
+      - name: zc
+        image: registry.cn-hangzhou.aliyuncs.com/nevermore/zc:v1
+        ports:
+        - containerPort: 80

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: za
+spec:
+  selector:
+    matchLabels:
+      app: za
+      version: v1
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: za
+        version: v1
+    spec:
+      containers:
+      - name: za
+        image: registry.cn-hangzhou.aliyuncs.com/nevermore/za:v1
+        ports:
+        - containerPort: 80

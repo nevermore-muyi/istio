@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zb
+spec:
+  selector:
+    matchLabels:
+      app: zb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zb
+    spec:
+      containers:
+      - name: zb
+        image: registry.cn-hangzhou.aliyuncs.com/nevermore/zb:v1
+        ports:
+        - containerPort: 80

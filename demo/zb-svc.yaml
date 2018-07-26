@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zb
+  labels:
+    app: zb
+spec:
+  ports:
+  - port: 80
+  selector:
+    app: zb

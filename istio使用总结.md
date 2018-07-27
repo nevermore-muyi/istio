@@ -50,8 +50,29 @@ istio的安装比较简单，官网有具体的安装步骤，以0.8.0为例，�
 
 ```
 可以配置简单的将负载分发到某个服务上
-# istioctl replace -f route/my-virtualservice.yaml
-# istioctl replace -f route/my-destinationrule.yaml
+# istioctl create -f route/my-virtualservice.yaml
+# istioctl create -f route/my-destinationrule.yaml
 即可将服务负载到version为v1，即打印"Hello there!"的服务。
+```
+
+##### 权重配置
+
+```
+可以按照version进行权重配置
+# istioctl replace -f route/my-destinationrule-weight-10-90.yaml
+# istioctl replace -f route/my-virtualservice-weight-10-90.yaml
+按照9:1的权重分配，这样访问时大部分访问到的是"Hello there!"，少部分显示"i am different!"
+```
+
+##### 错误注入
+
+```
+1.Delay
+# istioctl replace -f route/my-virtualservice-delay.yaml
+可以看到，会有50%的概率延迟5秒之后响应
+
+2.Abort
+# istioctl replace -f route/my-virtualservice-abort.yaml
+可以看到，会有50%的概率访问失败，显示"fault filter abort"
 ```
 

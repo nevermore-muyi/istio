@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: myvs
+spec:
+  hosts:
+    - za2
+  http:
+  - route:
+    - destination:
+        host: za2
+        subset: aa
+      weight: 90
+    - destination:
+        host: za2
+        subset: bb
+      weight: 10

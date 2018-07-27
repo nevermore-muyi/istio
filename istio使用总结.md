@@ -76,3 +76,8 @@ istio的安装比较简单，官网有具体的安装步骤，以0.8.0为例，�
 可以看到，会有50%的概率访问失败，显示"fault filter abort"
 ```
 
+#### 参考资料
+
+http://istio.doczh.cn/docs/reference/config/istio.networking.v1alpha3.html
+
+https://istio.io/docs/concepts/traffic-management/rules-configuration/#injecting-faults-in-the-request-path

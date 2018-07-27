@@ -76,6 +76,27 @@ istio的安装比较简单，官网有具体的安装步骤，以0.8.0为例，�
 可以看到，会有50%的概率访问失败，显示"fault filter abort"
 ```
 
+##### Ingress
+
+```
+1.首先获取到默认提供的gateway
+# kubectl get svc istio-ingressgateway -n istio-system
+2.创建规则
+# istioctl create -f route/my-ingress.yaml
+3.访问
+浏览器通过访问ingress的port所在ip和svc的nodeport端口访问，访问的微服务即为za2，即通过ingress的route访问到最终的service。
+```
+
+##### Egress
+
+```
+默认情况下，在Pod内部curl某些网站不通，比如curl https://www.baidu.com，但是通过创建egress规则后，
+# istioctl create -f route/my-egress.yaml
+在Pod内部再去curl，可以返回数据。
+```
+
+
+
 #### 参考资料
 
 http://istio.doczh.cn/docs/reference/config/istio.networking.v1alpha3.html

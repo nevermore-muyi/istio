@@ -90,12 +90,17 @@ istio的安装比较简单，官网有具体的安装步骤，以0.8.0为例，�
 ##### Egress
 
 ```
-默认情况下，在Pod内部curl某些网站不通，比如curl https://www.baidu.com，但是通过创建egress规则后，
+默认情况下，启用了Istio的服务在Pod内部curl某些网站不通，比如curl https://www.baidu.com，但是通过创建egress规则后，
 # istioctl create -f route/my-egress.yaml
 在Pod内部再去curl，可以返回数据。
 ```
 
+##### Mirror
 
+```
+可以通过mirror功能将负载到一个服务的流量同时负载另外一个服务中。
+使用场景：将生产环境版本的数据同时作为测试的版本数据负载过来，这样升级新版本就可以拥有生产环境的数据的测试。
+```
 
 #### 参考资料
 

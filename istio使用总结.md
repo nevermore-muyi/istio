@@ -125,6 +125,27 @@ Circuit Breaking即断路器，可以对请求做一些处理，主要通过创�
 使用场景：将生产环境版本的数据同时作为测试的版本数据负载过来，这样升级新版本就可以拥有生产环境的数据的测试。
 ```
 
+#### 安全策略
+
+##### 认证策略
+
+```
+认证策略有三种：
+1.全局的MeshPolicy（mesh-wide）
+a.istio-istio：可以实现
+b.istio-noistio：可以实现
+c.noistio-istio：暂无方法
+2.namespace/service：针对namespace或者单独的service
+3.End-user认证
+```
+
+##### 授权
+
+```
+1.启用授权，创建RbacConfig
+2.namespace之间授权/service之间授权（ServiceRole、ServiceRoleBinding）
+```
+
 #### 参考资料
 
 http://istio.doczh.cn/docs/reference/config/istio.networking.v1alpha3.html

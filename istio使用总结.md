@@ -27,7 +27,7 @@ istio的安装比较简单，官网有具体的安装步骤，以0.8.0为例，�
 # kubectl create -f za2-svc.yaml
 # kubectl create -f zb-svc.yaml
 
-自动注入的话，需要修改apiserver的配置参数，在admission-control配置项中添加：MutatingAdmissionWebhook、ValidatingAdmissionWebhook。
+自动注入的话，需要修改apiserver的配置参数，在admission-control配置项中添加：MutatingAdmissionWebhook、ValidatingAdmissionWebhook，并且需要给namespace加上label istio-injection=enabled。
 ```
 
 #### 查看

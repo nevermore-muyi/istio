@@ -109,6 +109,13 @@ TLS有两种形式，SIMPLE和MUTUAL，即单向和双向。
 默认情况下，启用了Istio的服务在Pod内部curl某些网站不通，比如curl https://www.baidu.com，但是通过创建egress规则后，
 # istioctl create -f route/my-egress.yaml
 在Pod内部再去curl，可以返回数据。
+除了创建ServiceEntry，还可以通过直接配置global.proxy.includeIPRanges参数。
+```
+
+##### Circuit Breaking
+
+```
+Circuit Breaking即断路器，可以对请求做一些处理，主要通过创建DestinationRule控制访问策略，如maxConnections、connectionPool等。
 ```
 
 ##### Mirror

@@ -84,7 +84,23 @@ istio的安装比较简单，官网有具体的安装步骤，以0.8.0为例，�
 2.创建规则
 # istioctl create -f route/my-ingress.yaml
 3.访问
-浏览器通过访问ingress的port所在ip和svc的nodeport端口访问，访问的微服务即为za2，即通过ingress的route访问到最终的service。
+浏览器通过访问ingress的pod所在ip和svc的nodeport端口访问，访问的微服务即为za2，即通过ingress的route访问到最终的service。
+可以将其与Kubernetes的Ingress类比。
+需要注意的是，同一个ingressgateway不要被多个gateway使用，否则会出现访问不通的情况。
+```
+
+##### Ingress-Https
+
+```
+1.生成证书：
+# git clone https://github.com/nicholasjackson/mtls-go-example
+# cd mtls-go-example
+# ./generate.sh <url> <password>
+2.创建Secret
+# kubectl create -n istio-system secret tls istio-ingressgateway-certs --key 3_application/private/<..pem> --cert 3_application/certs/<..pem>
+3.Gateway、VirtualService创建
+生成的密钥等文件必须放在/etc/istio/ingressgateway-certs目录下，参考官网
+TLS有两种形式，SIMPLE和MUTUAL，即单向和双向。
 ```
 
 ##### Egress

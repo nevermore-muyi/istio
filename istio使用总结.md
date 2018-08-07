@@ -201,6 +201,12 @@ c.noistio-istio：暂无方法
 /graph
 ```
 
+#### 整体架构
+
+```
+Istio整体架构主要有两部分，数据面和控制面。数据面主要使用Envoy，控制面包含Pilot、Mixer以及Auth部分。Envoy是真正工作的部分，Pilot则相当于地主，控制着整个流量部分；Mixer主要包含一些属性上的控制，主要有check、quota以及report。check主要做的是权限和黑白名单检测，quota表示访问的次数控制，report表示日志、度量等指标。Auth则表示认证，内部支持mutual TLS等认证。
+```
+
 #### 参考资料
 
 http://istio.doczh.cn/docs/reference/config/istio.networking.v1alpha3.html

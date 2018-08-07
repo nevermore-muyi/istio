@@ -146,6 +146,61 @@ c.noistio-istio：暂无方法
 2.namespace之间授权/service之间授权（ServiceRole、ServiceRoleBinding）
 ```
 
+##### TLS迁移
+
+```
+可以通过设置Policy中的mode为PERMISSIVE，保证非istio的服务可以通过纯文本的方式访问istio，而istio之间依旧可以实现mutual TLS流量访问。
+```
+
+##### HTTPS
+
+```
+有三种方式：
+1.https service没有注入到mesh中；
+2.https service注入到mesh中，但是mutual TLS未开启；
+3.https service注入到mesh中，开启了mutual TLS。
+需要注意的是，如果注入到mesh中，proxy之间传输从L7到L4。
+```
+
+#### Policy
+
+##### 速率控制
+
+```
+可以通过对rule和quota的设置来控制速率，针对特定的用户或者请求头等。
+```
+
+##### 名单控制
+
+```
+通过设置策略，Mixer可以根据特定属性值对某些微服务的访问直接拒绝或者黑白名单的控制。
+```
+
+#### 遥测
+
+##### 分布式跟踪
+
+```
+通过Jaeger跟踪访问时间和路径
+```
+
+##### 收集指标和日志
+
+```
+可以通过Mixer对属性的控制，收集到Metric和Log，并且可以针对Metric转化为Prometheus识别的数据，并且可以使用Fluentd记录日志。
+```
+
+##### 服务图
+
+```
+可以通过对Servicegraph的访问，查看服务图。相应的后缀名有：
+/force/forcegraph.html 
+/dotviz
+/dotgraph
+/d3graph
+/graph
+```
+
 #### 参考资料
 
 http://istio.doczh.cn/docs/reference/config/istio.networking.v1alpha3.html
